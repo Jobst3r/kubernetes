@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    service: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: backend
+  template:
+    metadata:
+      labels:
+        service: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/jobst3r/rest-backend
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: backend-cm
+          ports:
+            - containerPort: 3333
+          env:
+            - name: API_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: API_PORT
+            - name: TEST
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: TEST
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DATABASE_URL
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_DATABASE
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_HOST
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_PASSWORD
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_USER
+            - name: SECURITY_JWT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: SECURITY_JWT_SECRET
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: MINIO_ACCESS_KEY
+            - name: MINIO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: MINIO_HOST
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: MINIO_SECRET_KEY
+            - name: MINIO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: MINIO_PORT
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 100m
+            limits:
+              memory: 4Gi
