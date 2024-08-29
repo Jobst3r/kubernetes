@@ -8,4 +8,4 @@ images:
 namespace: jobster
 
 resources:
-  - ../../base
+  - ../base

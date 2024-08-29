@@ -4,7 +4,7 @@ metadata:
   name: api-dev
   namespace: argocd
 spec:
-  project: default
+  project: jobster
   source:
     repoURL: https://github.com/Jobst3r/kubernetes.git
     targetRevision: develop
