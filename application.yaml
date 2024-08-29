@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Jobst3r/kubernetes.git
+    targetRevision: HEAD
+    path: jobster
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jobster
+  
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    
+    automated:
+      prune: true
+      selfHeal: true
