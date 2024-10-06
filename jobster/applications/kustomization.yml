@@ -1,0 +1,4 @@
+resources:
+- restapi.deployment.yml
+- restapi.internal.service.yml
+- restapi.external.service.yml

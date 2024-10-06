@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-restapi-service
+spec:
+  type: NodePort
+  selector:
+    app: restapi
+    type: backend
+  ports:
+  - port: 3333
+    targetPort: 3333
+    nodePort: 3333

@@ -1,0 +1,4 @@
+resources:
+- certificate.yml
+- issuer.yml
+- jobster.ingress.yml

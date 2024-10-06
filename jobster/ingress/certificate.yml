@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: acme-crt
+spec:
+  secretName: api-tls
+  dnsNames:
+  - jobster.francois-egner.de
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io

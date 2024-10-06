@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-deployment
+  namespace: jobster
+  labels:
+    app: minio
+    type: backend
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minio
+        type: backend
+    spec:
+      containers:
+      - name: jobster-minio
+        image: docker.io/bitnami/minio:2024
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+          requests:
+            memory: "256Mi"
+            cpu: "1"
+        volumeMounts:
+        - mountPath: /bitnami/minio/data
+          name: minio-volume
+        env:
+        - name: MINIO_ROOT_USER
+          value: minioadmin
+        - name: MINIO_ROOT_PASSWORD
+          value: 2k46Tr@VpV9GBFhy
+
+
+      volumes:
+      - name: minio-volume
+        persistentVolumeClaim:
+          claimName: minio-volume-claim
+  selector:
+    matchLabels:
+      app: minio
+      type: backend
+
+
+

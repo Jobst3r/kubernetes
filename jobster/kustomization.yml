@@ -1,0 +1,5 @@
+resources:
+- ./applications
+- ./database
+- ./minio
+- ./ingress

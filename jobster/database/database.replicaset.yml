@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: database-replicaset
+  namespace: jobster
+  labels:
+    app: database
+    type: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: database
+      type: backend

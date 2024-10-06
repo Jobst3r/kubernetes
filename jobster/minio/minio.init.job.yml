@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-minio
+spec:
+  template:
+    spec:
+      containers:
+      - name: minio-client
+        image: ubuntu:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+          requests:
+            memory: "256Mi"
+            cpu: "1"
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          apt update
+          apt install wget -y
+          wget https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x mc
+          ./mc alias set myminio http://minio-internal-service:9000 minioadmin 2k46Tr@VpV9GBFhy
+          ./mc mb myminio/general
+      restartPolicy: Never
