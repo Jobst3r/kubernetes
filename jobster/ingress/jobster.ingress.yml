@@ -4,6 +4,7 @@ metadata:
   name: jobster-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "5g"
+  namespace: jobster
 spec:
   tls:
   - hosts:

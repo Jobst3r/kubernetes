@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: init-minio
+  namespace: jobster
 spec:
   template:
     spec:
