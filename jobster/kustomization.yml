@@ -1,5 +1,4 @@
 resources:
-- ./applications
-- ./database
-- ./minio
-- ./ingress
+- ./system
+- ./utils
+- ./backend
