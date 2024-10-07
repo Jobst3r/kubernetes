@@ -30,6 +30,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: restapi-internal-service
+            name: argocd-server
             port:
-              number: 3333
+              number: 8080
