@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - argocd.jobster.francois-egner.de
-    secretName: api-tls
+    secretName: argocd-cert
   ingressClassName: nginx
   rules:
   - host: argocd.jobster.francois-egner.de
