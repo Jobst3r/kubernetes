@@ -6,6 +6,7 @@ spec:
   secretName: api-tls
   dnsNames:
   - jobster.francois-egner.de
+  - argocd.jobster.francois-egner.de
   issuerRef:
     name: letsencrypt-issuer
     kind: ClusterIssuer
