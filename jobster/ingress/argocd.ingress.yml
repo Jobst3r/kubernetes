@@ -4,22 +4,16 @@ metadata:
   name: jobster-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "5g"
-  namespace: jobster
+  namespace: argocd
 spec:
   tls:
-  - hosts:
-    - jobster.francois-egner.de
-    - argocd.francois-egner.de
-    secretName: api-tls
-  ingressClassName: nginx
-  rules:
-  - host: jobster.francois-egner.de
+  - host: argocd.jobster.francois-egner.de
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: restapi-internal-service
+            name: argocd-server
             port:
-              number: 3333
+              number: 8080

@@ -2,3 +2,4 @@ resources:
 - certificate.yml
 - issuer.yml
 - jobster.ingress.yml
+- argocd.ingress.yml
