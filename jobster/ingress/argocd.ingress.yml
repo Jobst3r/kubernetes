@@ -1,12 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jobster-ingress
+  name: argocd-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "5g"
   namespace: argocd
 spec:
   tls:
+  - hosts:
+    - argocd.jobster.francois-egner.de
+    secretName: api-tls
+  ingressClassName: nginx
+  rules:
   - host: argocd.jobster.francois-egner.de
     http:
       paths:
