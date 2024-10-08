@@ -30,7 +30,6 @@ spec:
     metadata:
       labels:
         app: postgresql
-        namespace: jobster
     spec:
       containers:
       - name: postgresql
