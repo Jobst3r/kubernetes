@@ -2,3 +2,4 @@ resources:
   - ./applications
   - ./database
   - ./minio
+  - ./postgresql.yml
