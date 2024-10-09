@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: internal-postgresql-service
+  name: internal-jobster-postgresql-service
   namespace: jobster
 spec:
   type: ClusterIP
