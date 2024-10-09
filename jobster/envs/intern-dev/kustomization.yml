@@ -4,3 +4,5 @@ images:
   
 
 resources: ../../base
+
+namespace: intern-dev
