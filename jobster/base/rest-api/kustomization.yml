@@ -1,8 +1,3 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-metadata:
-  name: rest-api
-
 resources:
   - rest-api-deployment.yml
   - rest-api-internal-service.yml
