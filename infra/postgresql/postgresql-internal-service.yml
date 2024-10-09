@@ -11,3 +11,18 @@ spec:
   selector:
     app: postgresql
     type: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: internal-postgresql-service
+  namespace: jobster
+spec:
+  type: ClusterIP
+  ports:
+  - targetPort: 5432
+    port: 5432
+  selector:
+    app: postgresql
+    type: backend
+
