@@ -4,7 +4,7 @@ metadata:
   name: rest-api-configmap
   namespace: jobster
 data:
-  API_PORT: 3333
+  API_PORT: "3333"
 
   DATABASE_URL: postgres://localdev:N9t}OU1r^A7n@database-service:5432/jobster
   DB_HOST: database-service
