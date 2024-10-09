@@ -1,6 +1,0 @@
-resources:
-- minio.deployment.yml
-- minio.internal.service.yml
-- minio.volume.yml
-- minio.volumeclaim.yml
-- minio.init.job.yml

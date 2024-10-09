@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapi-deployment
+  namespace: jobster
+  labels:
+    app: restapi
+    type: backend
+
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: restapi
+        type: backend
+    spec:
+      containers:
+      - name: jobster-restapi
+        image: ghcr.io/jobst3r/rest-backend:0.8.6
+        resources:
+          limits:
+            memory: "2048Mi"
+            cpu: "2"
+          requests:
+            memory: "1024Mi"
+            cpu: "1"
+        env:
+        - name: API_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: API_PORT
+        - name: DATABASE_URL
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: DATABASE_URL
+        - name: DB_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: DB_HOST
+        - name: DB_PASSWORD
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: DB_PASSWORD
+        - name: DB_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: DB_PORT
+        - name: DB_USER
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: DB_USER
+        - name: SECURITY_JWT_SECRET
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: SECURITY_JWT_SECRET
+        - name: TEST
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: TEST
+        - name: MINIO_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: MINIO_HOST
+        - name: MINIO_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: MINIO_PORT
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: MINIO_ACCESS_KEY
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+                configMapKeyRef:
+                  name: rest-api-configmap
+                  key: MINIO_SECRET_KEY
+      imagePullSecrets:
+      - name: github-registry-secret
+  selector:
+    matchLabels:
+      app: restapi
+      type: backend
+
+
+

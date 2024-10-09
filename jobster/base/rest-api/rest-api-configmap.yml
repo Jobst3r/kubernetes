@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rest-api-configmap
+data:
+  API_PORT: 3333
+
+  DATABASE_URL: postgres://localdev:N9t}OU1r^A7n@database-service:5432/jobster
+  DB_HOST: database-service
+  DB_PASSWORD: N9t}OU1r^A7n
+  DB_PORT: "5432"
+  DB_USER: localdev
+
+  SECURITY_JWT_SECRET: oklasjflkasf9009!gjasjgalksjgl
+
+  TEST: "FALSE"
+
+  MINIO_HOST: minio-internal-service
+  MINIO_PORT: "9000"
+  MINIO_ACCESS_KEY: minioadmin
+  MINIO_SECRET_KEY: 2k46Tr@VpV9GBFhy
+

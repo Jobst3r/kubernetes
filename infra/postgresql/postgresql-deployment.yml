@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: database-deployment
+  name: postgresql-deployment
   namespace: jobster
   labels:
-    app: database
+    app: postgresql
     type: backend
 
 spec:
@@ -12,11 +12,11 @@ spec:
   template:
     metadata:
       labels:
-        app: database
+        app: postgresql
         type: backend
     spec:
       containers:
-      - name: jobster-database
+      - name: jobster-postgresql
         image: postgres:15-alpine
         ports:
         - containerPort: 5432
@@ -29,21 +29,30 @@ spec:
             cpu: "2"
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
-          name: db-volume
+          name: data-volume
         env:
         - name: POSTGRES_PASSWORD
-          value: "N9t}OU1r^A7n"
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-secret
+              key: password
         - name: POSTGRES_USER
-          value: localdev
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-secret
+              key: password
         - name: POSTGRES_DB
-          value: jobster
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-secret
+              key: database
       volumes:
-      - name: db-volume
+      - name: data-volume
         persistentVolumeClaim:
-          claimName: database-volume-claim
+          claimName: postgresql-volume-claim
   selector:
     matchLabels:
-      app: database
+      app: postgresql
       type: backend
 
 

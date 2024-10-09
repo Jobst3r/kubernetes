@@ -1,6 +1,0 @@
-resources:
-- database.volume.yml
-- database.volumeclaim.yml
-- database.deployment.yml
-- database.internal.service.yml
-- database.external.service.yml

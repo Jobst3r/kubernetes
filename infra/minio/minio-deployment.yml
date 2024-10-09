@@ -16,7 +16,7 @@ spec:
         type: backend
     spec:
       containers:
-      - name: jobster-minio
+      - name: minio
         image: docker.io/bitnami/minio:2024
         ports:
         - containerPort: 9000
@@ -33,9 +33,15 @@ spec:
           name: minio-volume
         env:
         - name: MINIO_ROOT_USER
-          value: minioadmin
+          valueFrom:
+            secretKeyRef:
+              name: minio-secret
+              key: username
         - name: MINIO_ROOT_PASSWORD
-          value: 2k46Tr@VpV9GBFhy
+          valueFrom:
+            secretKeyRef:
+              name: minio-secret
+              key: password
 
 
       volumes:

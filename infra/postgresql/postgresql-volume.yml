@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jobster-db-volume2
+  name: jobster-postgresql-volume
   namespace: jobster
 spec:
   capacity:
