@@ -1,5 +1,5 @@
 resources:
+  - rest-api-configmap.yml
   - rest-api-deployment.yml
   - rest-api-internal-service.yml
-  - rest-api-configmap.yml
   - rest-api-ingress.yml
