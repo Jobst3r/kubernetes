@@ -86,6 +86,7 @@ spec:
                 configMapKeyRef:
                   name: rest-api-configmap
                   key: MINIO_SECRET_KEY
+      dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: github-registry-secret
   selector:
