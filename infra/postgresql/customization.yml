@@ -1,9 +1,0 @@
-namespace: infra
-
-resources:
-  - postgresql-deployment.yml
-  - postgresql-internal-service.yml
-  - postgresql-external-service.yml
-  - postgresql-secret.yml
-  - postgresql-volume.yml
-  - postgresql-volumeclaim.yml
