@@ -4,7 +4,7 @@ metadata:
   name: chat-ms-deployment
   namespace: jobster
   labels:
-    app: chatms
+    app: apigateway
     type: backend
 
 spec:
@@ -12,12 +12,12 @@ spec:
   template:
     metadata:
       labels:
-        app: chatms
+        app: apigateway
         type: backend
     spec:
       containers:
       - name: jobster-chatms
-        image: ghcr.io/jobst3r/chats-ms:0.1.0
+        image: ghcr.io/jobst3r/api-gateway:0.1.1
         resources:
           limits:
             memory: "2048Mi"
@@ -29,34 +29,54 @@ spec:
         - name: API_PORT
           valueFrom:
                 configMapKeyRef:
-                  name: chat-ms-configmap
+                  name: api-gateway-configmap
                   key: API_PORT
         - name: DB_HOST
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  api-gateway-configmap
                   key: DB_HOST
         - name: DB_PASSWORD
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  api-gateway-configmap
                   key: DB_PASSWORD
         - name: DB_PORT
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  api-gateway-configmap
                   key: DB_PORT
         - name: DB_USER
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  api-gateway-configmap
                   key: DB_USER
+        - name: SERVICE_CHATSMS_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_CHATSMS_HOST
+        - name: SERVICE_CHATSMS_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_CHATSMS_PORT
+        - name: SERVICE_USERSMS_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_USERSMS_HOST
+        - name: SERVICE_USERSMS_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_USERSMS_PORT
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: github-registry-secret
   selector:
     matchLabels:
-      app: chatms
+      app: apigateway
       type: backend
 
 

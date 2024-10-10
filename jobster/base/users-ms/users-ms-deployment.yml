@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-ms-deployment
+  name: users-ms-deployment
   namespace: jobster
   labels:
-    app: chatms
+    app: usersms
     type: backend
 
 spec:
@@ -12,12 +12,12 @@ spec:
   template:
     metadata:
       labels:
-        app: chatms
+        app: usersms
         type: backend
     spec:
       containers:
-      - name: jobster-chatms
-        image: ghcr.io/jobst3r/chats-ms:0.1.0
+      - name: jobster-usersms
+        image: ghcr.io/jobst3r/users-ms:0.1.0
         resources:
           limits:
             memory: "2048Mi"
@@ -29,34 +29,34 @@ spec:
         - name: API_PORT
           valueFrom:
                 configMapKeyRef:
-                  name: chat-ms-configmap
+                  name: users-ms-configmap
                   key: API_PORT
         - name: DB_HOST
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  users-ms-configmap
                   key: DB_HOST
         - name: DB_PASSWORD
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  users-ms-configmap
                   key: DB_PASSWORD
         - name: DB_PORT
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  users-ms-configmap
                   key: DB_PORT
         - name: DB_USER
           valueFrom:
                 configMapKeyRef:
-                  name:  chat-ms-configmap
+                  name:  users-ms-configmap
                   key: DB_USER
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: github-registry-secret
   selector:
     matchLabels:
-      app: chatms
+      app: usersms
       type: backend
 
 

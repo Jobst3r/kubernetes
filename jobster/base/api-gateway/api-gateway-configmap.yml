@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-configmap
+  namespace: jobster
+data:
+  API_PORT: "5555"
+  DB_HOST: internal-postgresql-service.infra
+  DB_PASSWORD: N9t}OU1r^A7n
+  DB_PORT: "5432"
+  DB_USER: localdev
+  SERVICE_CHATSMS_HOST: "chat-ms-internal-service"
+  SERVICE_USERSMS_PORT: "4444"
+  SERVICE_USERSMS_HOST: "users-ms-internal-service"
+  SERVICE_CHATSMS_PORT: "3333"
