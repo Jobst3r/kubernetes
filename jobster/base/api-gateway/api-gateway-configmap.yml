@@ -13,3 +13,5 @@ data:
   SERVICE_USERSMS_PORT: "4444"
   SERVICE_USERSMS_HOST: "users-ms-internal-service"
   SERVICE_CHATSMS_PORT: "3333"
+  SECURITY_JWT_SECRET: oklasjflkasf9009!gjasjgalksjgl
+  SECURITY_MIN_PASSWORD_ENTROPY: "50"

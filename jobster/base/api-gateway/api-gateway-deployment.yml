@@ -26,6 +26,16 @@ spec:
             memory: "1024Mi"
             cpu: "0.25"
         env:
+        - name: SECURITY_MIN_PASSWORD_ENTROPY
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SECURITY_MIN_PASSWORD_ENTROPY
+        - name: SECURITY_JWT_SECRET
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SECURITY_JWT_SECRET
         - name: API_PORT
           valueFrom:
                 configMapKeyRef:
