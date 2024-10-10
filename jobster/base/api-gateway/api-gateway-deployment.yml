@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-ms-deployment
+  name: api-gateway-deployment
   namespace: jobster
   labels:
     app: apigateway
