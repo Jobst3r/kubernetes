@@ -21,10 +21,10 @@ spec:
         resources:
           limits:
             memory: "2048Mi"
-            cpu: "1"
+            cpu: "0.25"
           requests:
             memory: "1024Mi"
-            cpu: "0.25"
+            cpu: "0.125"
         env:
         - name: API_PORT
           valueFrom:

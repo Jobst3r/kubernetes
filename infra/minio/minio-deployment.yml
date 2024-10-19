@@ -24,10 +24,10 @@ spec:
         resources:
           limits:
             memory: "512Mi"
-            cpu: "0.5"
+            cpu: "0.25"
           requests:
             memory: "256Mi"
-            cpu: "0.5"
+            cpu: "0.125"
         volumeMounts:
         - mountPath: /bitnami/minio/data
           name: minio-volume
