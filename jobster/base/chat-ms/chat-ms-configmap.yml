@@ -4,7 +4,7 @@ metadata:
   name: chat-ms-configmap
   namespace: jobster
 data:
-  API_PORT: "4444"
+  API_PORT: "3333"
   DB_HOST: internal-postgresql-service.infra
   DB_PASSWORD: N9t}OU1r^A7n
   DB_PORT: "5432"
