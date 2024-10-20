@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: jobster-chatms
-        image: ghcr.io/jobst3r/chat-ms:0.1.1
+        image: ghcr.io/jobst3r/chat-ms:0.1.2
         resources:
           limits:
             memory: "2048Mi"
