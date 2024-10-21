@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searches-ms-deployment
+  namespace: jobster
+  labels:
+    app: searchesms
+    type: backend
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: searchesms
+        type: backend
+    spec:
+      containers:
+      - name: jobster-searchesms
+        image: ghcr.io/jobst3r/searches-ms:0.1.0
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "0.125"
+          requests:
+            memory: "1024Mi"
+            cpu: "0.125"
+        env:
+        - name: API_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name: searches-ms-configmap
+                  key: API_PORT
+        - name: DB_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name:  searches-ms-configmap
+                  key: DB_HOST
+        - name: DB_PASSWORD
+          valueFrom:
+                configMapKeyRef:
+                  name:  searches-ms-configmap
+                  key: DB_PASSWORD
+        - name: DB_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name:  searches-ms-configmap
+                  key: DB_PORT
+        - name: DB_USER
+          valueFrom:
+                configMapKeyRef:
+                  name:  searches-ms-configmap
+                  key: DB_USER
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: github-registry-secret
+  selector:
+    matchLabels:
+      app: searchesms
+      type: backend
+
+
+

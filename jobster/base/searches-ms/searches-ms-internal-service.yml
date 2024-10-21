@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: searches-ms-internal-service
+  namespace: jobster
+spec:
+  type: ClusterIP
+  ports:
+  - targetPort: 7777
+    port: 7777
+  selector:
+    app: searchesms
+    type: backend
