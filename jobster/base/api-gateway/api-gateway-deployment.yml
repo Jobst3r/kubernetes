@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: jobster-chatms
-        image: ghcr.io/jobst3r/api-gateway:0.3.0
+        image: ghcr.io/jobst3r/api-gateway:0.4.0
         resources:
           limits:
             memory: "2048Mi"
@@ -81,6 +81,16 @@ spec:
                 configMapKeyRef:
                   name:  api-gateway-configmap
                   key: SERVICE_USERSMS_PORT
+        - name: SERVICE_USERSMS_HOST
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_USERSMS_HOST
+        - name: SERVICE_SEARCHESMS_PORT
+          valueFrom:
+                configMapKeyRef:
+                  name:  api-gateway-configmap
+                  key: SERVICE_SEARCHESMS_PORT
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: github-registry-secret

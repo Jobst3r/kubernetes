@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: jobster-searchesms
-        image: ghcr.io/jobst3r/searches-ms:0.1.0
+        image: ghcr.io/jobst3r/searches-ms:0.1.2
         resources:
           limits:
             memory: "1024Mi"
