@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: users-ms-configmap
+  name: files-ms-configmap
   namespace: jobster
 data:
   API_PORT: "4444"
   DB_HOST: internal-postgresql-service.infra
   DB_PASSWORD: N9t}OU1r^A7n
   DB_PORT: "5432"
-  DB_USER: localdev
+  DB_USERNAME: localdev
